@@ -3,35 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>Add Intent</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to the Chatbot</h1>
-    <p>Ask me anything!</p>
-    <div id="chat-container">
-        <div id="response"></div>
+    <div class="container mt-5">
+        <h1>Add Intent</h1>
+        <form id="addIntentForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="tag">Tag:</label>
+                <input type="text" class="form-control" id="tag" name="tag" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pattern">Pattern:</label>
+                <input type="text" class="form-control" id="pattern" name="pattern" required>
+            </div>
+
+            <div class="form-group">
+                <label for="response">Response:</label>
+                <input type="text" class="form-control" id="response" name="response" required>
+            </div>
+
+            <div class="form-group">
+                <label for="response_type">Response Type:</label>
+                <select class="form-control" id="response_type" name="response_type" onchange="toggleUploadField()">
+                    <option value="link">Link</option>
+                    <option value="file">File</option>
+                </select>
+            </div>
+
+            <div id="linkField" style="display: block;">
+                <div class="form-group">
+                    <label for="link">Link:</label>
+                    <input type="text" class="form-control" id="link" name="link">
+                </div>
+            </div>
+
+            <div id="fileField" style="display: none; margin-bottom: 20px;">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file" name="file">
+                    <label class="custom-file-label" for="file">Choose file</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Intent</button>
+        </form>
+
+        <h2 class="mt-5">Added Intents:</h2>
+        <ul id="addedIntents" class="list-group"></ul>
     </div>
-    <input type="text" id="user-input" placeholder="Type your message here...">
-    <button onclick="sendMessage()">Send</button>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        function sendMessage() {
-            var userInput = document.getElementById('user-input').value;
-            var chatContainer = document.getElementById('response');
+        // Your JavaScript code here
+        document.getElementById('addIntentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var tag = document.getElementById('tag').value;
+            var pattern = document.getElementById('pattern').value; // Corrected here
+            var response = document.getElementById('response').value;
+            var responseType = document.getElementById('response_type').value;
+            var link = document.getElementById('link').value;
+            var file = document.getElementById('file').files[0];
+
+            var formData = new FormData();
+            formData.append('tag', tag);
+            formData.append('pattern', pattern); // Corrected here
+            formData.append('response', response);
+            formData.append('response_type', responseType);
+            formData.append('link', link);
+            formData.append('file', file);
 
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/chat", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({'message': userInput}));
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
+            xhr.open('POST', '/add_intent', true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);
-                    chatContainer.innerHTML += "<p>User: " + userInput + "</p>";
-                    chatContainer.innerHTML += "<p>Chatbot: " + response.message + "</p>";
+                    if (response.success) {
+                        displayAddedIntent(response.intent);
+                        document.getElementById('addIntentForm').reset();  // Reset the form fields
+                        alert('Intent added successfully!');
+                    } else {
+                        alert('Failed to add intent. Please try again.');
+                    }
                 }
             };
+            xhr.send(formData);
+        });
+
+        function displayAddedIntent(intent) {
+            var addedIntentsList = document.getElementById('addedIntents');
+            var listItem = document.createElement('li');
+            listItem.textContent = `Tag: ${intent.tag}\nPattern: ${intent.pattern}\nResponse: ${intent.responses[0].text}\nResponse Type: ${intent.responses[0].link ? 'Link' : 'File'}\nLink: ${intent.responses[0].link || 'Not provided'}`;
+            addedIntentsList.insertBefore(listItem, addedIntentsList.firstChild); // Insert new intent at the beginning
         }
+        function toggleUploadField() {
+            var responseType = document.getElementById('response_type').value;
+            var linkField = document.getElementById('linkField');
+            var fileField = document.getElementById('fileField');
+
+            if (responseType === 'file') {
+                linkField.style.display = 'none';
+                fileField.style.display = 'block';
+            } else {
+                linkField.style.display = 'block';
+                fileField.style.display = 'none';
+            }
+        }
+
+        // document.getElementById('addIntentForm').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+        //     var tag = document.getElementById('tag').value;
+        //     var pattern = document.getElementById('pattern').value;
+        //     var response = document.getElementById('response').value;
+        //     var responseType = document.getElementById('response_type').value;
+        //     var link = document.getElementById('link').value;
+        //     var file = document.getElementById('file').files[0];
+
+        //     var formData = new FormData();
+        //     formData.append('tag', tag);
+        //     formData.append('pattern', pattern);
+        //     formData.append('response', response);
+        //     formData.append('response_type', responseType);
+        //     formData.append('link', link);
+        //     formData.append('file', file);
+
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('POST', '/add_intent', true);
+        //     xhr.onload = function() {
+        //         if (xhr.status === 200) {
+        //             var response = JSON.parse(xhr.responseText);
+        //             if (response.success) {
+        //                 displayAddedIntent(response.intent);
+        //                 document.getElementById('addIntentForm').reset();  // Reset the form fields
+        //                 alert('Intent added successfully!');
+        //             } else {
+        //                 alert('Failed to add intent. Please try again.');
+        //             }
+        //         }
+        //     };
+        //     xhr.send(formData);
+        // });
+
+        // function displayAddedIntent(intent) {
+        //     var addedIntentsList = document.getElementById('addedIntents');
+        //     var listItem = document.createElement('li');
+        //     listItem.textContent = `Tag: ${intent.tag}\nPattern: ${intent.pattern}\nResponse: ${intent.responses[0].text}\nResponse Type: ${intent.responses[0].link ? 'Link' : 'File'}\nLink: ${intent.responses[0].link || 'Not provided'}`;
+        //     addedIntentsList.insertBefore(listItem, addedIntentsList.firstChild); // Insert new intent at the beginning
+        // }
     </script>
 </body>
 </html>

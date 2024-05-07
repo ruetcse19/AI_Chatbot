@@ -1,10 +1,123 @@
 {
     "intents": [
-      {"tag": "greeting", "patterns": ["Hi", "Hello", "Hey"], "responses": ["Hello!", "Hi there!", "Hey! How can I help you today?"]},
-      {"tag": "help", "patterns": ["Can you help?", "What can you do?", "Help"], "responses": ["I will try to assist you.", "Ask me what you want to know.", "Let me see if it is within my bound.", "I would love to."]},
-      {"tag": "name", "patterns": ["Who're you?", "Your name?", "Name", "What can I call you?", "Who are you?"], "responses": ["I am Shifa, an advanced AI model, version: 1.0.0", "Shifa", "You can call me Shifa", "I am Shifa", "Shifa, an learning AI model"]},
-      {"tag": "thanks", "patterns": ["Thanks", "Thank you", "Appreciate it"], "responses": ["You're welcome!", "No problem!", "Glad to help!"]},
-      {"tag": "goodbye", "patterns": ["Bye", "Goodbye", "See you later"], "responses": ["Goodbye!", "See you later, take care!"]}
+        {
+            "tag": "greeting",
+            "patterns": [
+                "hello",
+                "hi",
+                "hey",
+                "Hi there!",
+                "Hola"
+            ],
+            "responses": [
+                {
+                    "text": "Hello! How can I assist you?",
+                    "link": null
+                },
+                {
+                    "text": "Hi there! How can I help you today?",
+                    "link": null
+                },
+                {
+                    "text": "Hello! How can I assist you?",
+                    "link": null
+                }
+            ]
+        },
+        {
+            "tag": "farewell",
+            "patterns": [
+                "bye",
+                "goodbye",
+                "see you later"
+            ],
+            "responses": [
+                {
+                    "text": "Goodbye! Have a great day!",
+                    "link": null
+                },
+                {
+                    "text": "See you later!",
+                    "link": null
+                }
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "thank you",
+                "thanks a lot",
+                "thanks"
+            ],
+            "responses": [
+                {
+                    "text": "You're welcome!",
+                    "link": null
+                },
+                {
+                    "text": "No problem!",
+                    "link": null
+                },
+                {
+                    "text": "You're welcome!",
+                    "link": null
+                }
+            ]
+        },
+        {
+            "tag": "RUET",
+            "patterns": [
+                "Tell me about RUET",
+                "RUET",
+                "About RUET",
+                "What is RUET?",
+                "Engineering University in Rajshahi?"
+            ],
+            "responses": [
+                {
+                    "text": {
+                        "text": "Rajshahi University of Engineering & Technology, commonly known by the acronym RUET, is a PhD granting public engineering and technological research university in Rajshahi, Bangladesh. It specialises in the field of applied sciences, engineering, technology, architecture, and urban planning.",
+                        "link": "https://www.ruet.ac.bd/"
+                    },
+                    "link": null
+                }
+            ]
+        },
+        {
+            "tag": "BUET",
+            "patterns": [
+                "BUET"
+            ],
+            "responses": [
+                {
+                    "text": "BUET secured 305th position in the 2024 QS World University Rankings by Subject Area. Achievements. BUET became the Asia West Champion in the 46th ICPC World\u00a0...",
+                    "link": "https://www.buet.ac.bd/"
+                }
+            ]
+        },
+        {
+            "tag": "CUET",
+            "patterns": [
+                "CUET Bangladesh"
+            ],
+            "responses": [
+                {
+                    "text": "The Independence & National Day of Bangladesh-2024 celebrated at CUET. Details \u00b7 Hands-on-Training on BAC Accreditation Criteria/Standards-1 Details \u00b7 Conducted\u00a0...",
+                    "link": "https://www.cuet.ac.bd/"
+                }
+            ]
+        },
+        {
+            "tag": "tell_me_about_chittagong",
+            "patterns": [
+                "tell me about Chittagong"
+            ],
+            "responses": [
+                {
+                    "text": "It is the administrative seat of an eponymous division and district. The city is located on the banks of the Karnaphuli River between the Chittagong Hill Tracts\u00a0...",
+                    "link": "https://en.wikipedia.org/wiki/Chittagong"
+                }
+            ]
+        }
     ]
-  }
-  
+}
