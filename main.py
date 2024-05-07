@@ -59,8 +59,8 @@ def capture_conversation(intents, user_input=None, response=None, link=None):
 
 def search(query):
     url = "https://www.googleapis.com/customsearch/v1"
-    api_key = "your_api_key"
-    cx = "your_cx"
+    api_key = "AIzaSyBQdKT44VwjzJtJ4Adq64QqKD3P6wWQSWg"
+    cx = "a48bea04ec2654658"
     params = {
         "key": api_key,
         "cx": cx,

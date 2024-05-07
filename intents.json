@@ -118,6 +118,91 @@
                     "link": "https://en.wikipedia.org/wiki/Chittagong"
                 }
             ]
+        },
+        {
+            "tag": "ruet",
+            "patterns": [
+                "RUET"
+            ],
+            "responses": [
+                {
+                    "text": "Rajshahi University of Engineering & Technology, commonly known by the acronym RUET, is a PhD granting public engineering and technological research university in Rajshahi, Bangladesh. It specialises in the field of applied sciences, engineering, technology, architecture, and urban planning.",
+                    "link": "https://www.ruet.ac.bd/"
+                }
+            ]
+        },
+        {
+            "tag": "shifa",
+            "patterns": [
+                "Shifa"
+            ],
+            "responses": [
+                {
+                    "text": "Shifa Free Clinic is able to continually offer free services to the community largely because of the generous support of volunteers. We offer volunteer\u00a0...",
+                    "link": "https://www.icnarelief.org/shifaclinics/"
+                }
+            ]
+        },
+        {
+            "tag": "tasmia_jannat_ruet",
+            "patterns": [
+                "Tasmia Jannat RUET"
+            ],
+            "responses": [
+                {
+                    "text": "\u09a4\u09be\u09b8\u09ae\u09bf\u09af\u09bc\u09be \u099c\u09be\u09a8\u09cd\u09a8\u09be\u09a4 \u00b7 Room No: 110 \u00b7 Phone: 880-1689182329 , 880-1308543354 \u00b7 Email: jannat22tasmia@gmail.com \u00b7 jannat22tasmia@cse.ruet.ac.bd\u00a0...",
+                    "link": "https://www.ruet.ac.bd/jannat22tasmia"
+                }
+            ]
+        },
+        {
+            "tag": "vc_ruet",
+            "patterns": [
+                "VC of RUET"
+            ],
+            "responses": [
+                {
+                    "text": "All Vice-Chancellor List \u00b7 Prof. Dr. Engr. Md. Jahangir Alam \u00b7 Dr. Md. Sazzad Hossain \u00b7 Dr. Md. Rafiqul Islam Sheikh \u00b7 Dr. Mohd. Rafiqul Alam Beg \u00b7 Dr. Md. Mortuza\u00a0...",
+                    "link": "https://www.ruet.ac.bd/all-vice-chancellor"
+                }
+            ]
+        },
+        {
+            "tag": "routine",
+            "patterns": [
+                "4th year routine",
+                "routine"
+            ],
+            "responses": [
+                {
+                    "text": "This is the latest 4th year routine",
+                    "link": "/uploads/xzytjv_class-routine_2-5.pdf"
+                }
+            ]
+        },
+        {
+            "tag": "routine",
+            "patterns": [
+                "routine"
+            ],
+            "responses": [
+                {
+                    "text": "Routine is the most advanced calendar app, combining tasks & notes to supercharge your productivity. Available on iOS, macOS & Windows.",
+                    "link": "https://www.routine.co/"
+                }
+            ]
+        },
+        {
+            "tag": "hello_bot",
+            "patterns": [
+                "hello bot"
+            ],
+            "responses": [
+                {
+                    "text": "hellomybot.io is the perfect omnichannel bot platform (Saas) for companies and developers who want to create any kind of conversational agent (callbots,\u00a0...",
+                    "link": "https://hellomybot.io/"
+                }
+            ]
         }
     ]
 }

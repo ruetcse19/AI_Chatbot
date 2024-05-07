@@ -3,11 +3,11 @@
 
 ### Requirements
     Python = 3.10.x or above
-    pip
-    Flask
-    Wikipedia
-    googlesearch-python
-    BeautifulSoup
+    pip install requests
+    pip install Flask
+    pip install spacy
+    python -m spacy download en_core_web_sm
+
 
 ## Installation
 
