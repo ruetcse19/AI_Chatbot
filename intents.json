@@ -203,6 +203,18 @@
                     "link": "https://hellomybot.io/"
                 }
             ]
+        },
+        {
+            "tag": "tasmia",
+            "patterns": [
+                "tasmia"
+            ],
+            "responses": [
+                {
+                    "text": "\u09a4\u09be\u09b8\u09ae\u09bf\u09af\u09bc\u09be \u099c\u09be\u09a8\u09cd\u09a8\u09be\u09a4 \u00b7 Room No: 110 \u00b7 Phone: 880-1689182329 , 880-1308543354 \u00b7 Email: jannat22tasmia@gmail.com \u00b7 jannat22tasmia@cse.ruet.ac.bd\u00a0...",
+                    "link": "https://www.ruet.ac.bd/jannat22tasmia"
+                }
+            ]
         }
     ]
 }

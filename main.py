@@ -34,12 +34,21 @@ def get_response(intents, query):
     query_lower = query.lower()  
     for intent in intents['intents']:
         patterns_lower = [pattern.lower() for pattern in intent['patterns']]
+        # Check for exact match
         if query_lower in patterns_lower:
             response = get_random_response(intent)
             if 'text' in response and 'link' in response['text']:
                 return response['text']['text'], response['text']['link']
             else:
                 return response['text'], response['link']
+        # Check for partial match
+        for pattern in patterns_lower:
+            if query_lower in pattern:
+                response = get_random_response(intent)
+                if 'text' in response and 'link' in response['text']:
+                    return response['text']['text'], response['text']['link']
+                else:
+                    return response['text'], response['link']
     return None, None
 
 def capture_conversation(intents, user_input=None, response=None, link=None):
